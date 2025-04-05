@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize FAQ accordions
     initFAQs();
     
+    // Initialize references collapsible
+    initReferences();
+    
     // Initialize product slider
     initProductSlider();
     
@@ -99,6 +102,50 @@ function initFAQs() {
             }
         });
     });
+}
+
+/**
+ * Initialize References collapsible section
+ */
+function initReferences() {
+    const referenceSection = document.querySelector('.reference');
+    
+    if (referenceSection) {
+        const referenceTitle = referenceSection.previousElementSibling;
+        const referenceContent = referenceSection.innerHTML;
+        
+        // Create the collapsible structure
+        const collapsible = document.createElement('div');
+        collapsible.className = 'reference-collapsible';
+        
+        const header = document.createElement('div');
+        header.className = 'reference-header';
+        header.innerHTML = `${referenceTitle.outerHTML}<span class="reference-toggle">+</span>`;
+        
+        const content = document.createElement('div');
+        content.className = 'reference-content';
+        
+        const inner = document.createElement('div');
+        inner.className = 'reference-inner';
+        inner.innerHTML = referenceContent;
+        
+        content.appendChild(inner);
+        collapsible.appendChild(header);
+        collapsible.appendChild(content);
+        
+        // Replace the original elements with the collapsible
+        referenceTitle.parentNode.replaceChild(collapsible, referenceTitle);
+        referenceSection.remove();
+        
+        // Add click event to toggle
+        header.addEventListener('click', function() {
+            collapsible.classList.toggle('active');
+            const toggleIcon = this.querySelector('.reference-toggle');
+            if (toggleIcon) {
+                toggleIcon.textContent = collapsible.classList.contains('active') ? '−' : '+';
+            }
+        });
+    }
 }
 
 /**
