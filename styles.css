@@ -262,7 +262,7 @@ img {
 }
 
 .product-main {
-    width: 70%;
+    width: 80%; /* Tăng độ rộng từ 70% lên 80% */
     padding-right: 40px;
 }
 
@@ -865,6 +865,48 @@ img {
     transform: rotate(45deg);
 }
 
+/* Collapsible References */
+.reference-collapsible {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.reference-header {
+    padding: 15px;
+    background-color: #f5f5f5;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reference-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.reference-inner {
+    padding: 15px 0;
+}
+
+.reference-collapsible.active .reference-content {
+    max-height: 2000px;
+}
+
+.reference-toggle {
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.reference-collapsible.active .reference-toggle {
+    transform: rotate(45deg);
+}
+
 .case-study {
     margin: 20px 0;
     padding: 20px;
@@ -959,9 +1001,6 @@ img {
 .reference {
     font-size: 12px;
     color: #666;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
 }
 
 .reference-list {
